@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 6</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      margin: 0;
+      padding: 30px;
+    }
+
+    .card {
+      max-width: 700px;
+      margin: auto;
+      background: #111827;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Quiz Geek</h1>
+
+    <p>1. Quem é o pai de Luke Skywalker?</p>
+    <label><input type="radio" name="q1" value="0"> Obi-Wan</label><br>
+    <label><input type="radio" name="q1" value="1"> Darth Vader</label><br>
+    <label><input type="radio" name="q1" value="0"> Han Solo</label>
+
+    <p>2. Qual é o tipo do Pikachu?</p>
+    <label><input type="radio" name="q2" value="1"> Elétrico</label><br>
+    <label><input type="radio" name="q2" value="0"> Fogo</label><br>
+    <label><input type="radio" name="q2" value="0"> Água</label>
+
+    <p>3. Quem usa a armadura de Homem de Ferro?</p>
+    <label><input type="radio" name="q3" value="1"> Tony Stark</label><br>
+    <label><input type="radio" name="q3" value="0"> Steve Rogers</label><br>
+    <label><input type="radio" name="q3" value="0"> Bruce Banner</label><br>
+
+    <button onclick="corrigirQuiz()">Finalizar Quiz</button>
+    <p id="resultado"></p>
+  </div>
+
+  <script>
+    function corrigirQuiz() {
+      let total = 0;
+      let q1 = document.querySelector('input[name="q1"]:checked');
+      let q2 = document.querySelector('input[name="q2"]:checked');
+      let q3 = document.querySelector('input[name="q3"]:checked');
+
+      if (!q1 || !q2 || !q3) {
+        document.getElementById("resultado").innerText = "Responda tudo.";
+        return;
+      }
+
+      total += Number(q1.value);
+      total += Number(q2.value);
+      total += Number(q3.value);
+
+      document.getElementById("resultado").innerText = "Pontuação final: " + total + "/3";
+    }
+  </script>
+</body>
+</html>
