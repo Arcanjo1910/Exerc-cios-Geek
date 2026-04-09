@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 4</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      margin: 0;
+      padding: 30px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card {
+      max-width: 500px;
+      margin: auto;
+      background: #111827;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    button {
+      padding: 12px 18px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Botão Interativo</h1>
+    <button onclick="modoAranha()" id="botao">Ativar Modo Aranha</button>
+    <p id="texto">Status atual: normal.</p>
+  </div>
+
+  <script>
+    let ativo = false;
+
+    function modoAranha() {
+      let texto = document.getElementById("texto");
+      let botao = document.getElementById("botao");
+
+      ativo = !ativo;
+
+      if (ativo) {
+        document.body.style.background = "#7f1d1d";
+        texto.innerText = "Status atual: Modo Aranha ativado.";
+        botao.innerText = "Desativar Modo Aranha";
+      } else {
+        document.body.style.background = "#0f172a";
+        texto.innerText = "Status atual: normal.";
+        botao.innerText = "Ativar Modo Aranha";
+      }
+    }
+  </script>
+</body>
+</html>
