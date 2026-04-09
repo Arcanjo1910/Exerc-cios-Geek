@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercícios Geek</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #0f172a;
+      color: white;
+    }
+
+    .topo {
+      padding: 20px;
+      text-align: center;
+      background: #111827;
+    }
+
+    .topo h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+
+    .container {
+      display: flex;
+      min-height: calc(100vh - 90px);
+    }
+
+    .menu {
+      width: 280px;
+      background: #1e293b;
+      padding: 15px;
+    }
+
+    .menu button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #334155;
+      color: white;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .menu button.ativo {
+      background: #2563eb;
+    }
+
+    .conteudo {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .aba {
+      display: none;
+      background: #111827;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .aba.ativa {
+      display: block;
+    }
+
+    img {
+      max-width: 180px;
+      border-radius: 10px;
+    }
+
+    .perfil {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .habilidades li {
+      margin-bottom: 6px;
+    }
+
+    .card {
+      max-width: 350px;
+      background: #1e293b;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .barra {
+      background: #334155;
+      height: 10px;
+      border-radius: 20px;
+      margin: 5px 0 12px;
+      overflow: hidden;
+    }
+
+    .preenchimento {
+      height: 100%;
+    }
+
+    .vida { width: 85%; background: #22c55e; }
+    .poder { width: 75%; background: #ef4444; }
+    .energia { width: 65%; background: #3b82f6; }
+
+    .favorito {
+      color: #facc15;
+      font-weight: bold;
+    }
+
+    .botoes button,
+    .quiz button {
+      padding: 10px 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-right: 8px;
+      margin-top: 10px;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+    }
+
+    .personagem {
+      background: #1e293b;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .personagem img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+
+    #detalhes {
+      margin-top: 15px;
+      padding: 15px;
+      background: #1e293b;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .claro {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .claro .topo,
+    .claro .aba,
+    .claro .card,
+    .claro .personagem,
+    .claro #detalhes {
+      background: white;
+      color: #111827;
+    }
+
+    .claro .menu {
+      background: #cbd5e1;
+    }
+
+    .claro .menu button {
+      background: #94a3b8;
+      color: #111827;
+    }
+
+    .claro .menu button.ativo {
+      background: #2563eb;
+      color: white;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .menu {
+        width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topo">
+    <h1>Exercícios Geek</h1>
+    <p>Clique nos botões para abrir cada exercício.</p>
+  </div>
+
+  <div class="container">
+    <div class="menu">
+      <button class="ativo" onclick="abrirAba('inicio', this)">Início</button>
+      <button onclick="abrirAba('ex1', this)">1. Perfil de Personagem</button>
+      <button onclick="abrirAba('ex2', this)">2. Card de Herói/Vilão</button>
+      <button onclick="abrirAba('ex3', this)">3. Lista de Episódios</button>
+      <button onclick="abrirAba('ex4', this)">4. Botão Interativo</button>
+      <button onclick="abrirAba('ex5', this)">5. Sistema de Pontuação</button>
+      <button onclick="abrirAba('ex6', this)">6. Quiz Geek</button>
+      <button onclick="abrirAba('ex7', this)">7. Troca de Tema</button>
+      <button onclick="abrirAba('ex8', this)">8. Galeria de Personagens</button>
+    </div>
+
+    <div class="conteudo">
+      <div class="aba ativa" id="inicio">
+        <h2>Início</h2>
+        <p>Projeto feito em HTML, CSS e JavaScript.</p>
+      </div>
+
+      <div class="aba" id="ex1">
+        <h2>1. Perfil de Personagem</h2>
+        <div class="perfil">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'><rect width='220' height='220' rx='18' fill='%231e3a8a'/><circle cx='110' cy='110' r='78' fill='%23dc2626'/><path d='M62 70 L158 70 M55 92 L165 92 M50 114 L170 114 M55 136 L165 136 M62 158 L158 158' stroke='%230f172a' stroke-width='4' opacity='0.45'/><path d='M110 34 L110 186 M82 40 L92 180 M138 40 L128 180 M34 110 L186 110 M40 82 L180 92 M40 138 L180 128' stroke='%230f172a' stroke-width='4' opacity='0.45'/><path d='M72 98 Q88 76 102 98 Q87 111 72 98Z' fill='white'/><path d='M148 98 Q132 76 118 98 Q133 111 148 98Z' fill='white'/></svg>" alt="Homem-Aranha">
+          <div>
+            <h3>Homem-Aranha</h3>
+            <p>Herói da Marvel conhecido pela agilidade, sentido aranha e uso de teias.</p>
+            <ul class="habilidades">
+              <li>Teia</li>
+              <li>Agilidade</li>
+              <li>Escalar paredes</li>
+              <li>Sentido aranha</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="aba" id="ex2">
+        <h2>2. Card de Herói/Vilão</h2>
+        <div class="card">
+          <h3>Arthas</h3>
+          <p>Tipo: Vilão</p>
+          <p>Vida</p>
+          <div class="barra"><div class="preenchimento vida"></div></div>
+          <p>Poder</p>
+          <div class="barra"><div class="preenchimento poder"></div></div>
+          <p>Energia</p>
+          <div class="barra"><div class="preenchimento energia"></div></div>
+        </div>
+      </div>
+
+      <div class="aba" id="ex3">
+        <h2>3. Lista de Episódios</h2>
+        <ol>
+          <li>Breaking Bad - Pilot</li>
+          <li class="favorito">Breaking Bad - Ozymandias</li>
+          <li>Better Call Saul - Five-O</li>
+          <li>Better Call Saul - Chicanery</li>
+          <li>Breaking Bad - Face Off</li>
+          <li>Better Call Saul - Plan and Execution</li>
+        </ol>
+      </div>
+
+      <div class="aba" id="ex4">
+        <h2>4. Botão Interativo</h2>
+        <button onclick="modoAranha()" id="botaoAranha">Ativar Modo Aranha</button>
+        <p id="textoAranha">Status atual: normal.</p>
+      </div>
+
+      <div class="aba" id="ex5">
+        <h2>5. Sistema de Pontuação</h2>
+        <h3 id="xp">0 XP</h3>
+        <div class="botoes">
+          <button onclick="somarXP()">+10 XP</button>
+          <button onclick="tirarXP()">-5 XP</button>
+        </div>
+      </div>
+
+      <div class="aba quiz" id="ex6">
+        <h2>6. Quiz Geek</h2>
+
+        <p>1. Quem é o pai de Luke Skywalker?</p>
+        <label><input type="radio" name="q1" value="0"> Obi-Wan</label><br>
+        <label><input type="radio" name="q1" value="1"> Darth Vader</label><br>
+        <label><input type="radio" name="q1" value="0"> Han Solo</label>
+
+        <p>2. Qual é o tipo do Pikachu?</p>
+        <label><input type="radio" name="q2" value="1"> Elétrico</label><br>
+        <label><input type="radio" name="q2" value="0"> Fogo</label><br>
+        <label><input type="radio" name="q2" value="0"> Água</label>
+
+        <p>3. Quem usa a armadura de Homem de Ferro?</p>
+        <label><input type="radio" name="q3" value="1"> Tony Stark</label><br>
+        <label><input type="radio" name="q3" value="0"> Steve Rogers</label><br>
+        <label><input type="radio" name="q3" value="0"> Bruce Banner</label><br>
+
+        <button onclick="corrigirQuiz()">Finalizar Quiz</button>
+        <p id="resultadoQuiz"></p>
+      </div>
+
+      <div class="aba" id="ex7">
+        <h2>7. Troca de Tema</h2>
+        <button onclick="trocarTema()">Alternar Tema</button>
+        <p id="temaTexto">Tema atual: escuro.</p>
+      </div>
+
+      <div class="aba" id="ex8">
+        <h2>8. Galeria de Personagens</h2>
+        <div class="galeria">
+          <div class="personagem" onclick="mostrarDetalhes('Batman', 'DC', 'Herói de Gotham')">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'><rect width='220' height='220' rx='18' fill='%23111827'/><path d='M55 60 L80 30 L95 60 L125 60 L140 30 L165 60 L165 150 Q110 200 55 150Z' fill='%230f172a'/><ellipse cx='110' cy='130' rx='50' ry='18' fill='%23facc15'/><path d='M85 130 L98 120 L104 127 L116 127 L122 120 L135 130 L120 130 L112 136 L108 136 L100 130Z' fill='%23111827'/><rect x='72' y='76' width='76' height='22' rx='8' fill='%23334155'/></svg>" alt="Batman">
+            <p>Batman</p>
+          </div>
+          <div class="personagem" onclick="mostrarDetalhes('Homem de Ferro', 'Marvel', 'Herói com armadura tecnológica')">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'><rect width='220' height='220' rx='18' fill='%237f1d1d'/><path d='M70 55 L150 55 L165 85 L152 158 L68 158 L55 85Z' fill='%23dc2626'/><path d='M82 70 L138 70 L146 92 L138 146 L82 146 L74 92Z' fill='%23f59e0b'/><rect x='90' y='100' width='40' height='18' rx='6' fill='%23ffffff'/><rect x='85' y='85' width='18' height='10' rx='4' fill='%2393c5fd'/><rect x='117' y='85' width='18' height='10' rx='4' fill='%2393c5fd'/></svg>" alt="Homem de Ferro">
+            <p>Homem de Ferro</p>
+          </div>
+          <div class="personagem" onclick="mostrarDetalhes('Mario', 'Nintendo', 'Herói dos games')">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'><rect width='220' height='220' rx='18' fill='%230b3b8c'/><circle cx='110' cy='118' r='48' fill='%23f2c29b'/><path d='M60 92 Q110 42 160 92 L160 110 L60 110Z' fill='%23dc2626'/><rect x='85' y='74' width='50' height='26' rx='8' fill='%23dc2626'/><text x='110' y='92' font-size='18' text-anchor='middle' fill='white' font-family='Arial'>M</text><path d='M82 136 Q110 158 138 136' stroke='%23292424' stroke-width='10' fill='none' stroke-linecap='round'/><circle cx='92' cy='120' r='5'/><circle cx='128' cy='120' r='5'/></svg>" alt="Mario">
+            <p>Mario</p>
+          </div>
+          <div class="personagem" onclick="mostrarDetalhes('Loki', 'Marvel', 'Vilão e anti-herói')">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'><rect width='220' height='220' rx='18' fill='%23145432'/><path d='M72 45 L95 20 L102 54 L118 54 L125 20 L148 45 L148 150 L72 150Z' fill='%23facc15'/><rect x='82' y='70' width='56' height='72' rx='12' fill='%23111827'/><rect x='90' y='92' width='16' height='8' rx='3' fill='%2393c5fd'/><rect x='114' y='92' width='16' height='8' rx='3' fill='%2393c5fd'/><path d='M92 122 Q110 132 128 122' stroke='%23facc15' stroke-width='5' fill='none'/></svg>" alt="Loki">
+            <p>Loki</p>
+          </div>
+        </div>
+
+        <div id="detalhes">
+          <h3 id="nomeDetalhe"></h3>
+          <p id="universoDetalhe"></p>
+          <p id="descricaoDetalhe"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function abrirAba(id, botao) {
+      let abas = document.querySelectorAll('.aba');
+      let botoes = document.querySelectorAll('.menu button');
+
+      abas.forEach(aba => aba.classList.remove('ativa'));
+      botoes.forEach(b => b.classList.remove('ativo'));
+
+      document.getElementById(id).classList.add('ativa');
+      botao.classList.add('ativo');
+    }
+
+    let aranha = false;
+    function modoAranha() {
+      let texto = document.getElementById('textoAranha');
+      let botao = document.getElementById('botaoAranha');
+
+      aranha = !aranha;
+
+      if (aranha) {
+        document.getElementById('ex4').style.background = '#7f1d1d';
+        texto.innerText = 'Status atual: Modo Aranha ativado.';
+        botao.innerText = 'Desativar Modo Aranha';
+      } else {
+        document.getElementById('ex4').style.background = '#111827';
+        texto.innerText = 'Status atual: normal.';
+        botao.innerText = 'Ativar Modo Aranha';
+      }
+    }
+
+    let pontos = 0;
+    function somarXP() {
+      pontos += 10;
+      document.getElementById('xp').innerText = pontos + ' XP';
+    }
+
+    function tirarXP() {
+      pontos -= 5;
+      if (pontos < 0) pontos = 0;
+      document.getElementById('xp').innerText = pontos + ' XP';
+    }
+
+    function corrigirQuiz() {
+      let total = 0;
+      let q1 = document.querySelector('input[name="q1"]:checked');
+      let q2 = document.querySelector('input[name="q2"]:checked');
+      let q3 = document.querySelector('input[name="q3"]:checked');
+
+      if (!q1 || !q2 || !q3) {
+        document.getElementById('resultadoQuiz').innerText = 'Responda tudo.';
+        return;
+      }
+
+      total += Number(q1.value);
+      total += Number(q2.value);
+      total += Number(q3.value);
+
+      document.getElementById('resultadoQuiz').innerText = 'Pontuação final: ' + total + '/3';
+    }
+
+    function trocarTema() {
+      document.body.classList.toggle('claro');
+      let texto = document.getElementById('temaTexto');
+      texto.innerText = document.body.classList.contains('claro')
+        ? 'Tema atual: claro.'
+        : 'Tema atual: escuro.';
+    }
+
+    function mostrarDetalhes(nome, universo, descricao) {
+      document.getElementById('detalhes').style.display = 'block';
+      document.getElementById('nomeDetalhe').innerText = nome;
+      document.getElementById('universoDetalhe').innerText = 'Universo: ' + universo;
+      document.getElementById('descricaoDetalhe').innerText = descricao;
+    }
+  </script>
+</body>
+</html>
