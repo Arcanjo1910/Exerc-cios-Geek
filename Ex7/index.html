@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 7</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      margin: 0;
+      padding: 30px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card {
+      max-width: 500px;
+      margin: auto;
+      background: #111827;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+
+    .claro {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .claro .card {
+      background: white;
+      color: #111827;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Troca de Tema</h1>
+    <button onclick="trocarTema()">Alternar Tema</button>
+    <p id="textoTema">Tema atual: escuro.</p>
+  </div>
+
+  <script>
+    function trocarTema() {
+      document.body.classList.toggle("claro");
+
+      if (document.body.classList.contains("claro")) {
+        document.getElementById("textoTema").innerText = "Tema atual: claro.";
+      } else {
+        document.getElementById("textoTema").innerText = "Tema atual: escuro.";
+      }
+    }
+  </script>
+</body>
+</html>
