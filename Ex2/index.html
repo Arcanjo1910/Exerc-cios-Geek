@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 2</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      margin: 0;
+      padding: 30px;
+    }
+
+    .card {
+      max-width: 400px;
+      margin: auto;
+      background: #111827;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .barra {
+      height: 12px;
+      background: #334155;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .fill {
+      height: 100%;
+    }
+
+    .vida { width: 85%; background: #22c55e; }
+    .poder { width: 75%; background: #ef4444; }
+    .energia { width: 65%; background: #3b82f6; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Card de Herói/Vilão</h1>
+
+    <h2>Arthas</h2>
+    <p>Tipo: Vilão</p>
+
+    <p>Vida</p>
+    <div class="barra"><div class="fill vida"></div></div>
+
+    <p>Poder</p>
+    <div class="barra"><div class="fill poder"></div></div>
+
+    <p>Energia</p>
+    <div class="barra"><div class="fill energia"></div></div>
+  </div>
+</body>
+</html>
