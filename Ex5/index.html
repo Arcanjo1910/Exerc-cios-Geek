@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 5</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      margin: 0;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .card {
+      max-width: 500px;
+      margin: auto;
+      background: #111827;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    button {
+      padding: 10px 16px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .mais {
+      background: #22c55e;
+    }
+
+    .menos {
+      background: #ef4444;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Sistema de Pontuação</h1>
+    <h2 id="xp">0 XP</h2>
+
+    <button class="mais" onclick="somarXP()">+10 XP</button>
+    <button class="menos" onclick="tirarXP()">-5 XP</button>
+  </div>
+
+  <script>
+    let pontos = 0;
+
+    function somarXP() {
+      pontos += 10;
+      document.getElementById("xp").innerText = pontos + " XP";
+    }
+
+    function tirarXP() {
+      pontos -= 5;
+      if (pontos < 0) pontos = 0;
+      document.getElementById("xp").innerText = pontos + " XP";
+    }
+  </script>
+</body>
+</html>
